@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,3 +37,4 @@ Route::get('/', function (){
         "title" => "Home"
     ]);
 });
+Route::resource('/contacts', ContactController::class);
