@@ -37,10 +37,15 @@ Route::get('/', function (){
         "title" => "Beranda"
     ]);
 });
-Route::resource('/contacts', ContactController::class);
+
+//Route::resource('/contacts', ContactController::class);
+
 Auth::routes();
 
 Route::group(['middleware'=> ['auth']], function (){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/contacts/index', [App\Http\Controllers\ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/{$id}/edit', [App\Http\Controllers\ContactController::class, 'edit'])->name('contacts.edit');
+    Route::get('/contacts/{$id}/update', [App\Http\Controllers\ContactController::class, 'update'])->name('contacts.update');
 });
 
